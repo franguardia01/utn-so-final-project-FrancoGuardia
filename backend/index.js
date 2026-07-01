@@ -23,6 +23,23 @@ app.get("/api/students", async (req, res) => {
     res.status(500).send("DB error");
   }
 });
+// Tarea 4: Agregar estudiante a la base de datos
+app.post("/api/students", async (req, res) => {
+  var nombreNuevo = req.body.name;
 
+  if(!nombreNuevo){
+    return res.status(400).json({ error: "Falta el nombre del estudiante"});
+  }
+
+  try {
+    var consulta = "INSERT INTO students (name) VALUES ($1) RETURNING id, name";
+    var resultado = await db.query(consulta, [nombreNuevo]);
+
+    res.json(resultado.rows[0]);
+  } catch (err){
+    console.error(err);
+    res.status(500).send("Error de BD al insertar");
+  }
+});
 // Start the server
 app.listen(port, () => console.log(`App running on port ${port}`));

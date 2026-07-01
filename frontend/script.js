@@ -24,7 +24,36 @@ miBoton.onclick = function() {
     .then(function(datos){
       miParrafo.innerText = datos.message;
     })
+  }
+  
+  //Tarea 4: Logica para agregar estudiante
+  var botonAgregar = document.getElementById("addStudentBtn");
 
+  botonAgregar.onclick = function() {
+    var inputNuevoEstudiante = document.getElementById("studentNameInput");
+    var nombreEstudiante = inputNuevoEstudiante.value;
 
-}
+    if(nombreEstudiante === ""){
+      alert("Por favor, escribe un nombre");
+      return;
+    }
+
+    fetch("/api/students", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ name: nombreEstudiante})
+    })
+    .then(function(respuesta){
+      if(respuesta.ok) {
+        inputNuevoEstudiante.value = "";
+
+        document.getElementById("loadButton").click();
+      } else {
+        alert("Hubo un error al guardar");
+      }
+    });
+  };
+
 
