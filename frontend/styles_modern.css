@@ -68,6 +68,7 @@ tr:last-child td {
     border-bottom: none;
 }
 
+
 @media (max-width: 500px) {
     table {
         width: 98vw;
