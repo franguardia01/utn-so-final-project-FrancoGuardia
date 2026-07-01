@@ -68,6 +68,12 @@ tr:last-child td {
     border-bottom: none;
 }
 
+.saludo-container{
+    margin: 20px 0;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
 
 @media (max-width: 500px) {
     table {
