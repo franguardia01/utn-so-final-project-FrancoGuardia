@@ -75,6 +75,13 @@ tr:last-child td {
     align-items: center;
 }
 
+.saludo-container input{
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
 @media (max-width: 500px) {
     table {
         width: 98vw;
