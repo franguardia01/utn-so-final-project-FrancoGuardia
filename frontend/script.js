@@ -9,3 +9,22 @@ document.getElementById("loadButton").addEventListener("click", async () => {
     tbody.appendChild(row);
   });
 });
+// Tarea 2: Saludo;
+var miBoton = document.getElementById("greetBtn");
+
+miBoton.onclick = function() {
+  var miInput = document.getElementById("nameInput");
+  var miParrafo = document.getElementById("greetingMessage");
+  var nombre = miInput.value;
+
+  fetch("/api/greet?name=" + nombre)
+    .then(function(respuesta){
+      return respuesta.json();
+    })
+    .then(function(datos){
+      miParrafo.innerText = datos.message;
+    })
+
+
+}
+
